@@ -23,6 +23,10 @@ const TitleBlock = styled.div`
    font-family: Arial;
 `;
 
+const TitleSpan = styled.span`
+   margin-left: 1rem;
+`;
+
 const LogoBlock = styled.div`
    display: block;
    height: ${LOGO_HEIGHT_PX}px;
@@ -53,7 +57,7 @@ export function AppLoginPage(props) {
       onSuccess: codeResponse => console.log(codeResponse)
    });
    return [
-      <TitleBlock>{props.app_name}</TitleBlock>,
+      <TitleBlock><TitleSpan>{props.app_name}</TitleSpan></TitleBlock>,
       <LogoBlock>
          <img src={logo} alt="am chill whale" height={LOGO_HEIGHT_PX}/>
       </LogoBlock>,
