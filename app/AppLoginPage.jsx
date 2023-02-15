@@ -50,15 +50,12 @@ const Wrapper = styled(CoolStyles.Block)`
    ${CoolStyles.align_center}
 `
 
-function user_verified (response) {
+function user_verified(response) {
    console.log("user_verified", response);
 }
 
 export function AppLoginPage(props) {
-   const login = useGoogleLogin({
-      onSuccess: r => user_verified(r),
-      useOneTap
-   });
+   const login = useGoogleLogin({onSuccess: r => user_verified(r)});
    return [
       <TitleBlock><TitleSpan>{props.app_name}</TitleSpan></TitleBlock>,
       <LogoBlock>
