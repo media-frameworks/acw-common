@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import styled from "styled-components";
 
-import {AppStyles} from "app/AppImports";
+import {CoolStyles} from "common/ui/CoolImports";
 
-const TabsWrapper = styled(AppStyles.Block)`
+const TabsWrapper = styled(CoolStyles.Block)`
    margin: 0;
 `;
 
-const CardWrapper = styled(AppStyles.Block)`
+const CardWrapper = styled(CoolStyles.Block)`
    border: 0.15rem solid #aaaaaa;
    border-radius: 0 0.25rem 0.25rem 0.25rem;
    min-height: 12.25rem;
@@ -17,16 +17,16 @@ const CardWrapper = styled(AppStyles.Block)`
    padding: 0.5rem
 `;
 
-const TabSpan = styled(AppStyles.InlineBlock)`
-   ${AppStyles.bold}
-   ${AppStyles.pointer}
+const TabSpan = styled(CoolStyles.InlineBlock)`
+   ${CoolStyles.bold}
+   ${CoolStyles.pointer}
    color: #eeeeee;
    background-color: #bbbbbb;
    padding: 0 0.5rem;
 `;
 
-const TabSpanSelected = styled(AppStyles.InlineBlock)`
-   ${AppStyles.bold}
+const TabSpanSelected = styled(CoolStyles.InlineBlock)`
+   ${CoolStyles.bold}
    color: #444444;
    padding: 0 0.5rem;
    border: 0.15rem solid #aaaaaa;

@@ -3,22 +3,21 @@ import styled from "styled-components";
 
 import {useGoogleLogin} from '@react-oauth/google';
 
+import {CoolStyles, CoolColors} from 'common/ui/CoolImports';
+
 import logo from './logo.jpg';
 
 const LOGO_HEIGHT_PX = 75;
 
-const TitleBlock = styled.div`
-   display: block;
-   text-align: center;
+const TitleBlock = styled(CoolStyles.Block)`
+   ${CoolStyles.align_center}
+   ${CoolStyles.uppercase}
    padding-top: 15vh;
    font-size: 1.5rem;
    letter-spacing: 1.5rem;
    text-shadow: 0.5rem 0.5rem 1rem rgba(0,0,0,0.35);
    color: #666666;
-   text-transform: uppercase;
    background-color: white;
-   align-items: center;
-   justify-content: center;
    font-family: Arial;
 `;
 
@@ -26,41 +25,48 @@ const TitleSpan = styled.span`
    margin-left: 1rem;
 `;
 
-const LogoBlock = styled.div`
-   display: block;
+const LogoBlock = styled(CoolStyles.Block)`
    height: ${LOGO_HEIGHT_PX}px;
    width: fit-content;
    margin: 2rem auto 25vh;
 `;
 
-const HSL_COOL_BLUE = 'hsla(200, 90%, 50%, 85%)';
-
 const ButtonBlock = styled.button`
-   display: block;
+   ${CoolStyles.bold}
+   ${CoolStyles.pointer}
+   ${CoolStyles.uppercase}
+   ${CoolStyles.medium_box_shadow}
+   ${CoolStyles.narrow_border_radius}
    padding: 0.5rem 2rem;
-   margin: 0 auto;
-   background-color: ${HSL_COOL_BLUE};
+   background-color: ${CoolColors.cool_blue};
    color: white;
    font-size: 1.25rem;
-   font-weight: bold;
-   border-radius: 0.25rem;
    letter-spacing: 0.25rem;
-   text-transform: uppercase;
    border: 0.15rem solid #888888;
-   box-shadow: 0.5rem 0.5rem 1rem rgba(0,0,0,0.5);
-   cursor: pointer;
+   font-family: Arial;
 `;
+
+const Wrapper = styled(CoolStyles.Block)`
+   ${CoolStyles.align_center}
+`
+
+function user_verified (response) {
+   console.log("user_verified", response);
+}
 
 export function AppLoginPage(props) {
    const login = useGoogleLogin({
-      onSuccess: codeResponse => console.log(codeResponse)
+      onSuccess: r => user_verified(r),
+      useOneTap
    });
    return [
       <TitleBlock><TitleSpan>{props.app_name}</TitleSpan></TitleBlock>,
       <LogoBlock>
          <img src={logo} alt="am chill whale" height={LOGO_HEIGHT_PX}/>
       </LogoBlock>,
-      <ButtonBlock onClick={() => login()}>Begin</ButtonBlock>
+      <Wrapper>
+         <ButtonBlock onClick={() => login()}>Begin</ButtonBlock>
+      </Wrapper>
    ]
 }
 

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import {AppStyles} from "../../app/AppImports";
+import {CoolStyles} from "./CoolImports";
 
 export class CoolInputText extends Component {
 
@@ -61,7 +61,7 @@ export class CoolInputText extends Component {
       const {input_ref, current_value} = this.state;
       const {placeholder, style_extra, is_text_area, callback} = this.props;
       return is_text_area ?
-         <AppStyles.InputTextArea
+         <CoolStyles.InputTextArea
             ref={input_ref}
             autoFocus
             size={current_value.length}
@@ -71,7 +71,7 @@ export class CoolInputText extends Component {
             cols={40}
             onChange={e => this.on_change(e.target.value)}
             placeholder={placeholder}/> :
-         <AppStyles.InputText
+         <CoolStyles.InputText
             ref={input_ref}
             autoFocus
             size={current_value.length}

@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import styled from "styled-components";
 
-import {AppStyles, AppColors} from "../../app/AppImports";
+import {CoolStyles, CoolColors} from "./CoolImports";
 
-const BasicButton = styled(AppStyles.InlineBlock)`
-   ${AppStyles.pointer}
-   ${AppStyles.noselect}
+const BasicButton = styled(CoolStyles.InlineBlock)`
+   ${CoolStyles.pointer}
+   ${CoolStyles.noselect}
    border-radius: 0.25rem;
    padding: 0.325rem 0.75rem;
 `;
@@ -31,7 +31,7 @@ export class CoolButton extends Component {
       const {content, on_click, style, primary, disabled} = this.props;
       if (primary) {
          style.color = "white";
-         style.backgroundColor = AppColors.HSL_DEEP_BLUE
+         style.backgroundColor = CoolColors.deep_blue
       } else {
          style.color = "#333333";
          style.backgroundColor = "#cccccc"

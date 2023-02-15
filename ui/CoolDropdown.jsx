@@ -5,13 +5,13 @@ import PropTypes from 'prop-types';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faCaretRight} from '@fortawesome/free-solid-svg-icons';
 
-import {AppStyles} from "../../app/AppImports";
+import {CoolStyles} from "./CoolImports";
 
 const ITEM_COLOR = "#888888";
 const ITEM_HILIGHT_COLOR = "#333333";
 
 const DropdownContainer = styled.div`    
-    ${AppStyles.fixed}
+    ${CoolStyles.fixed}
     min-width: 4rem;
     overflow: auto;
     z-index: 100;
@@ -23,7 +23,7 @@ const DropdownContainer = styled.div`
 `;
 
 const DropdownElement = styled.div`
-    ${AppStyles.pointer}
+    ${CoolStyles.pointer}
     padding: 0.125rem 0.5rem;
     font-size: 0.85rem;
     color: ${ITEM_COLOR};
@@ -34,8 +34,7 @@ const DropdownElement = styled.div`
     }
 `;
 
-const DropdownLabel = styled.div`
-    ${AppStyles.inline_block}
+const DropdownLabel = styled(CoolStyles.InlineBlock)`
     padding: 0.1rem 0.25rem;
     border-radius: 0.25rem;
 `;
@@ -45,8 +44,7 @@ const DropdownSeparator = styled.div`
 `;
 
 const SubMenuCaret = styled(FontAwesomeIcon)`
-    ${AppStyles.inline_block}
-    float: reight;
+    float: right;
     padding-left: 0.5rem
 `;
 
