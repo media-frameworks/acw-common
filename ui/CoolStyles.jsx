@@ -83,6 +83,18 @@ export class CoolStyles {
         box-shadow: 1rem 1rem 2rem rgba(0,0,0,0.2);
     `;
 
+   static narrow_text_shadow = css`
+        text-shadow: 0.25rem 0.25rem 0.5rem rgba(0,0,0,0.5);
+    `;
+
+   static medium_text_shadow = css`
+        text-shadow: 0.5rem 0.5rem 1rem rgba(0,0,0,0.5);
+    `;
+
+   static wide_text_shadow = css`
+        text-shadow: 1rem 1rem 2rem rgba(0,0,0,0.5;
+    `;
+
    static narrow_border_radius = css`
         border-radius: 0.25rem;
     `;
