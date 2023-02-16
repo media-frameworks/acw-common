@@ -6,11 +6,15 @@ import {CoolStyles, CoolColors} from './CoolImports';
 
 export const SPLITTER_TYPE_HORIZONTAL = "horizontal";
 export const SPLITTER_TYPE_VERTICAL = "vertical";
+const SPLITTER_BORDER_COLOR = '#aaaaaa';
 
 const SplitterBar = styled(CoolStyles.InlineBlock)`
    ${CoolStyles.absolute}
-   background-color: #eeeeee;
+   ${CoolStyles.noselect}
+  background-color: #eeeeee;
    z-index: 100;
+   border-left: 1px solid ${SPLITTER_BORDER_COLOR};
+   border-right: 1px solid ${SPLITTER_BORDER_COLOR};
 `;
 
 export class CoolSplitter extends Component {
@@ -76,7 +80,7 @@ export class CoolSplitter extends Component {
       } : {
          top: container_bounds.top,
          left: position - bar_width_px / 2,
-         width: bar_width_px,
+         width: bar_width_px - 1,
          height: container_bounds.height,
          cursor: "ew-resize"
       }

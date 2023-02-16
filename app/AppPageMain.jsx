@@ -35,7 +35,7 @@ const ContentWrapper = styled(CoolStyles.Block)`
 
 const RightSideWrapper = styled(CoolStyles.InlineBlock)`
    ${CoolStyles.fixed}
-   background-color: lightcoral;
+   background-color: #dddddd;
    top: ${HEADER_BAR_HEIGHT_REM}rem;
    bottom: 0;
    right: 0;
@@ -43,7 +43,7 @@ const RightSideWrapper = styled(CoolStyles.InlineBlock)`
 
 const LeftSideWrapper = styled(CoolStyles.InlineBlock)`
    ${CoolStyles.fixed}
-   background-color: lightsalmon;
+   background-color: #cccccc;
    top: ${HEADER_BAR_HEIGHT_REM}rem;
    bottom: 0;
    left: 0;
@@ -84,6 +84,7 @@ export class AppPageMain extends Component {
             splitter_position: splitter_position ? splitter_position : content_bounds.height / 2,
          });
       }
+      this.resize_panes(splitter_position)
    }
 
    resize_panes = (splitter_position) => {
