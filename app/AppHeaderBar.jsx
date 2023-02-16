@@ -2,18 +2,21 @@ import {Component} from 'react';
 import PropTypes from 'prop-types';
 import styled from "styled-components";
 
-import {CoolStyles, CoolColors} from 'common/ui/CoolImports';
+import {CoolStyles} from 'common/ui/CoolImports';
+
+export const HEADER_BAR_HEIGHT_REM = 1.35;
 
 const HeaderWrapper = styled(CoolStyles.Block)`
    ${CoolStyles.fixed}
+   ${CoolStyles.noselect}
    left: 0;
    right: 0;
    top: 0;
-   height: 1.25rem;
+   height: ${HEADER_BAR_HEIGHT_REM - 0.1}rem;
    background: linear-gradient(15deg, #edeeef 0%, #fdfeff 50%, #dddedf 90%);
    opacity: 0.8;
    font-family: Arial;
-   border-bottom: 1px solid black;
+   border-bottom: 0.1rem solid black;
 `;
 
 const LogoutLink = styled(CoolStyles.InlineBlock)`

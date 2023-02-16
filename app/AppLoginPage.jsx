@@ -72,7 +72,7 @@ function user_verified(response) {
 export function AppLoginPage(props) {
    const login = useGoogleLogin({onSuccess: r => user_verified(r)});
    const credentials = localStorage.getItem("credentials", null);
-   return credentials ? <PageMain/> : [
+   return credentials ? <PageMain app_name={props.app_name}/> : [
       <TitleBlock><TitleSpan>{props.app_name}</TitleSpan></TitleBlock>,
       <LogoBlock>
          <img src={logo} alt="am chill whale" height={LOGO_HEIGHT_PX}/>

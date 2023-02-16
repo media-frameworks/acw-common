@@ -2,14 +2,15 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import styled from "styled-components";
 
-import {AppStyles, AppColors} from "../../app/AppImports";
+import {CoolStyles, CoolColors} from './CoolImports';
 
 export const SPLITTER_TYPE_HORIZONTAL = "horizontal";
 export const SPLITTER_TYPE_VERTICAL = "vertical";
 
-const SplitterBar = styled(AppStyles.InlineBlock)`
-   ${AppStyles.absolute}
+const SplitterBar = styled(CoolStyles.InlineBlock)`
+   ${CoolStyles.absolute}
    background-color: #eeeeee;
+   z-index: 100;
 `;
 
 export class CoolSplitter extends Component {
@@ -31,6 +32,7 @@ export class CoolSplitter extends Component {
 
    start_drag = (e) => {
       const {type} = this.props;
+      console.log("start_drag")
       const drag_start_pos = type === SPLITTER_TYPE_HORIZONTAL ? e.clientY : e.clientX;
       this.setState({
          in_drag: true,
@@ -78,7 +80,7 @@ export class CoolSplitter extends Component {
          height: container_bounds.height,
          cursor: "ew-resize"
       }
-      bar_style.backgroundColor = in_drag ? AppColors.HSL_COOL_BLUE : '#eeeeee';
+      bar_style.backgroundColor = in_drag ? CoolColors.cool_blue : '#eeeeee';
       return <SplitterBar
          ref={splitter_ref}
          style={bar_style}
