@@ -4,6 +4,7 @@ import styled from "styled-components";
 import {useGoogleLogin} from '@react-oauth/google';
 
 import {CoolStyles, CoolColors} from 'common/ui/CoolImports';
+import PageMain from 'pages/PageMain';
 
 import logo from './logo.jpg';
 
@@ -50,13 +51,28 @@ const Wrapper = styled(CoolStyles.Block)`
    ${CoolStyles.align_center}
 `
 
+const FRACTO_PHP_URL_BASE = "https://dev.mikehallstudio.com/fracto/fracto-server";
+
 function user_verified(response) {
-   console.log("user_verified", response);
+   const url = `${FRACTO_PHP_URL_BASE}/google_request.php?access_token=${response.access_token}`;
+   fetch(url)
+      .then(response => response.json())
+      .then(result => {
+         console.log("result", response)
+         if (result['emailAddresses'][0]['value'] !== "mikehallvideo@gmail.com") {
+            console.log("bad user")
+         } else {
+            console.log("good user")
+            localStorage.setItem("credentials", JSON.stringify(result))
+            window.location = "/main";
+         }
+      })
 }
 
 export function AppLoginPage(props) {
    const login = useGoogleLogin({onSuccess: r => user_verified(r)});
-   return [
+   const credentials = localStorage.getItem("credentials", null);
+   return credentials ? <PageMain/> : [
       <TitleBlock><TitleSpan>{props.app_name}</TitleSpan></TitleBlock>,
       <LogoBlock>
          <img src={logo} alt="am chill whale" height={LOGO_HEIGHT_PX}/>
