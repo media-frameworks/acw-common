@@ -65,42 +65,54 @@ export class AppPageMain extends Component {
    };
 
    componentDidMount() {
+      const {app_name} = this.props;
       window.addEventListener("resize", this.resize_wrapper);
-      this.resize_wrapper();
-      this.resize_panes(200);
+
+      const position_key = `${app_name}_splitter_position`;
+      const splitter_position = localStorage.getItem(position_key)
+
+      console.log("componentDidMount calling resize_wrapper", splitter_position)
+      this.resize_wrapper(null, splitter_position);
    }
 
    componentWillUnmount() {
       window.removeEventListener("resize", this.resize_wrapper);
    }
 
-   resize_wrapper = (e) => {
-      const {wrapper_ref, splitter_position} = this.state;
+   resize_wrapper = (e, splitter_position = 0) => {
+      const {wrapper_ref} = this.state;
       const wrapper = wrapper_ref.current;
       if (wrapper) {
          const content_bounds = wrapper.getBoundingClientRect();
          this.setState({
             content_bounds: content_bounds,
-            splitter_position: splitter_position ? splitter_position : content_bounds.height / 2,
          });
       }
-      this.resize_panes(splitter_position)
+      this.resize_panes(splitter_position ? splitter_position : this.state.splitter_position)
    }
 
-   resize_panes = (splitter_position) => {
+   resize_panes = (splitter_position, from_callback = false) => {
       const {wrapper_ref} = this.state;
-      const {on_resize} = this.props;
+      const {app_name, on_resize} = this.props;
       const wrapper = wrapper_ref.current;
       if (wrapper) {
          const content_bounds = wrapper.getBoundingClientRect();
          const right_side_width = content_bounds.width - splitter_position - SPLITTER_WIDTH_PX + 2;
          const left_side_width = splitter_position;
          on_resize(left_side_width, right_side_width)
+         // console.log("setting left_side_width, right_side_width",left_side_width, right_side_width)
          this.setState({
             splitter_position: splitter_position,
             right_side_width: right_side_width,
             left_side_width: left_side_width,
          })
+      }
+      // console.log("resize_panes", splitter_position, from_callback)
+      if (from_callback) {
+         const position_key = `${app_name}_splitter_position`;
+         const position_value = `${splitter_position}`;
+         // console.log("localStorage.setItem", position_key, position_value)
+         localStorage.setItem(position_key, position_value)
       }
    }
 
@@ -110,7 +122,7 @@ export class AppPageMain extends Component {
       return <PageWrapper ref={wrapper_ref}>
          <AppHeaderBar app_name={app_name}/>,
          <ContentWrapper>
-            <LeftSideWrapper style={{width: left_side_width}}>
+            <LeftSideWrapper style={{width: `${left_side_width}px`}}>
                {content_left}
             </LeftSideWrapper>
             <CoolSplitter
@@ -119,9 +131,9 @@ export class AppPageMain extends Component {
                bar_width_px={SPLITTER_WIDTH_PX}
                container_bounds={content_bounds}
                position={splitter_position}
-               on_change={pos => this.resize_panes(pos)}
+               on_change={pos => this.resize_panes(pos, true)}
             />
-            <RightSideWrapper style={{width: right_side_width}}>
+            <RightSideWrapper style={{width: `${right_side_width}px`}}>
                {content_right}
             </RightSideWrapper>
          </ContentWrapper>
