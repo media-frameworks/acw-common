@@ -61,12 +61,10 @@ export class AppHeaderBar extends Component {
 
    render() {
       const {app_name} = this.props;
-      return [
-         <HeaderWrapper>
-            <AppTitle>{app_name}</AppTitle>
-            <LogoutLink onClick={this.logout}>{"bye now"}</LogoutLink>
-         </HeaderWrapper>
-      ]
+      return <HeaderWrapper>
+         <AppTitle>{app_name}</AppTitle>
+         <LogoutLink onClick={this.logout}>{"bye now"}</LogoutLink>
+      </HeaderWrapper>
    }
 }
 

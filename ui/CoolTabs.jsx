@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import styled from "styled-components";
 
-import {CoolStyles} from "common/ui/CoolImports";
+import {CoolStyles} from "./CoolImports";
 
 const TabsWrapper = styled(CoolStyles.Block)`
    margin: 0;
@@ -39,44 +39,29 @@ const TabSpanSelected = styled(CoolStyles.InlineBlock)`
 export class CoolTabs extends Component {
 
    static propTypes = {
-      tab_data: PropTypes.array.isRequired,
+      labels: PropTypes.array.isRequired,
+      tab_index: PropTypes.number.isRequired,
+      on_tab_select: PropTypes.func.isRequired,
+      selected_content: PropTypes.array.isRequired,
       style: PropTypes.object,
-      initial_selection: PropTypes.number
    }
 
    static defaultProps = {
       style: {},
-      initial_selection: 0
    }
 
-   componentDidMount() {
-      const {initial_selection} = this.props;
-      this.setState({selected_index: initial_selection})
-   }
-
-   componentDidUpdate(prevProps, prevState, snapshot) {
-      // const {selected_index} = this.state;
-      // const {initial_selection} = this.props;
-      // if (selected_index !== initial_selection) {
-      //    this.setState({selected_index: initial_selection})
-      // }
-   }
-
-   state = {
-      selected_index: 0
-   }
+   state = {}
 
    render() {
-      const {selected_index} = this.state;
-      const {tab_data, style} = this.props;
-      const all_tabs = tab_data.map((tab, i) => {
-         return i !== selected_index ?
-            <TabSpan onClick={e => this.setState({selected_index: i})}>{tab.label}</TabSpan> :
-            <TabSpanSelected>{tab.label}</TabSpanSelected>
+      const {labels, style, tab_index, on_tab_select, selected_content} = this.props;
+      const all_tabs = labels.map((label, i) => {
+         return i !== tab_index ?
+            <TabSpan key={`${label}_tab`} onClick={e => on_tab_select(i)}>{label}</TabSpan> :
+            <TabSpanSelected key={`${label}_tab`}>{label}</TabSpanSelected>
       })
       return [
-         <TabsWrapper style={style}>{all_tabs}</TabsWrapper>,
-         <CardWrapper style={style}>{tab_data[selected_index].content}</CardWrapper>
+         <TabsWrapper key={"tab_wrapper"} style={style}>{all_tabs}</TabsWrapper>,
+         <CardWrapper key={"card_wrapper"} style={style}>{selected_content}</CardWrapper>
       ]
    }
 }

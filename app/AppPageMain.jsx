@@ -69,9 +69,8 @@ export class AppPageMain extends Component {
       window.addEventListener("resize", this.resize_wrapper);
 
       const position_key = `${app_name}_splitter_position`;
-      const splitter_position = localStorage.getItem(position_key)
+      const splitter_position = parseInt(localStorage.getItem(position_key))
 
-      console.log("componentDidMount calling resize_wrapper", splitter_position)
       this.resize_wrapper(null, splitter_position);
    }
 
@@ -100,18 +99,15 @@ export class AppPageMain extends Component {
          const right_side_width = content_bounds.width - splitter_position - SPLITTER_WIDTH_PX + 2;
          const left_side_width = splitter_position;
          on_resize(left_side_width, right_side_width)
-         // console.log("setting left_side_width, right_side_width",left_side_width, right_side_width)
          this.setState({
             splitter_position: splitter_position,
             right_side_width: right_side_width,
             left_side_width: left_side_width,
          })
       }
-      // console.log("resize_panes", splitter_position, from_callback)
       if (from_callback) {
          const position_key = `${app_name}_splitter_position`;
          const position_value = `${splitter_position}`;
-         // console.log("localStorage.setItem", position_key, position_value)
          localStorage.setItem(position_key, position_value)
       }
    }

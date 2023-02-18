@@ -73,11 +73,11 @@ export function AppLoginPage(props) {
    const login = useGoogleLogin({onSuccess: r => user_verified(r)});
    const credentials = localStorage.getItem("credentials", null);
    return credentials ? <PageMain app_name={props.app_name}/> : [
-      <TitleBlock><TitleSpan>{props.app_name}</TitleSpan></TitleBlock>,
-      <LogoBlock>
+      <TitleBlock key={`${props.app_name}_title`}><TitleSpan>{props.app_name}</TitleSpan></TitleBlock>,
+      <LogoBlock key={`${props.app_name}_logo`}>
          <img src={logo} alt="am chill whale" height={LOGO_HEIGHT_PX}/>
       </LogoBlock>,
-      <Wrapper>
+      <Wrapper key={`${props.app_name}_button`}>
          <ButtonBlock onClick={() => login()}>Begin</ButtonBlock>
       </Wrapper>
    ]
