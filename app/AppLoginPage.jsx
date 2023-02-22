@@ -51,9 +51,10 @@ const Wrapper = styled(CoolStyles.Block)`
    ${CoolStyles.align_center}
 `
 
-const FRACTO_PHP_URL_BASE = "https://dev.mikehallstudio.com/fracto/fracto-server";
+const FRACTO_PHP_URL_BASE = "http://dev.mikehallstudio.com/fracto/fracto-server";
 
 function user_verified(response) {
+   console.log("response.access_token",response.access_token)
    const url = `${FRACTO_PHP_URL_BASE}/google_request.php?access_token=${response.access_token}`;
    fetch(url)
       .then(response => response.json())

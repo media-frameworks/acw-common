@@ -84,7 +84,7 @@ export class CoolStyles {
     `;
 
    static narrow_text_shadow = css`
-        text-shadow: 0.25rem 0.25rem 0.5rem rgba(0,0,0,0.5);
+        text-shadow: 0.25rem 0.25rem 0.5rem rgba(0,0,0,0.75);
     `;
 
    static medium_text_shadow = css`
