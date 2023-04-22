@@ -21,16 +21,36 @@ export class BigComplex {
       this.im = math.bignumber(im);
    }
 
+   get_re = () => {
+      const re_str = `${this.re}`;
+      return parseFloat(re_str.substr(0, 20))
+   }
+
+   get_im = () => {
+      const im_str = `${this.im}`;
+      return parseFloat(im_str.substr(0, 20))
+   }
+
+   is_valid = () => {
+      if (isNaN(this.re.toNumber())) {
+         return false;
+      }
+      if (isNaN(this.im.toNumber())) {
+         return false;
+      }
+      return true;
+   }
+
    toString = (limit = MAX_COMPARE_DIGITS) => {
       const re_str = `${this.re.toString()}`;
       const im_str = `${this.im.toString()}`;
       return `${re_str.substr(0, limit)}+${im_str.substr(0, limit)}i`;
    }
 
-   compare = (z) => {
-      const this_str = this.toString(MAX_COMPARE_DIGITS);
-      const z_str = z.toString(MAX_COMPARE_DIGITS);
-      return this_str === z_str ? true : false;
+   compare = (z, limit = MAX_COMPARE_DIGITS) => {
+      const this_str = this.toString(limit);
+      const z_str = z.toString(limit);
+      return this_str === z_str;
    }
 
    magnitude = () => {
@@ -88,7 +108,7 @@ export class BigComplex {
    }
 
    offset = (re, im) => {
-      return new BigComplex(this.re.add(re), this.im.add(im));
+      return new BigComplex(this.re.add(math.bignumber(re)), this.im.add(math.bignumber(im)));
    }
 
    add = (c) => {

@@ -56,7 +56,7 @@ export class ComplexQuarternary {
    }
 
    carry_left = () => {
-      console.log("carry_left", this)
+      // console.log("carry_left", this)
       for (let r_index = this.right_part.length - 1; r_index >= 0; r_index--) {
          const mod_value = this.right_part[r_index] % 4;
          const div_value = Math.floor(this.right_part[r_index] / 4);
@@ -177,7 +177,7 @@ export class ComplexQuarternary {
       }
       const delta_1 = Math.abs(target - current);
       if (delta_1 < 0.000000000000001) {
-         console.log("exact match", target, current)
+         // console.log("exact match", target, current)
          cb("exact match");
          return true;
       } else if (delta_1 > 4 * Math.abs(factor)) {
@@ -200,10 +200,10 @@ export class ComplexQuarternary {
    from_complex = (re, im) => {
       let result_q = new Array(3 + MAX_RIGHT_DIGITS).fill(0)
       this.render_cq_recursive(re, 0.0, -4.0, 0, result_q, returns => {
-         console.log("render_cq_recursive re returns", returns)
+         // console.log("render_cq_recursive re returns", returns)
       })
       this.render_cq_recursive(im, 0.0, 2.0, 1, result_q, returns => {
-         console.log("render_cq_recursive im returns", returns)
+         // console.log("render_cq_recursive im returns", returns)
       })
       return [result_q.slice(0, 2), result_q.slice(3)];
    }

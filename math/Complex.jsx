@@ -51,6 +51,14 @@ export class Complex {
       return new Complex(this.re + z.re, this.im + z.im);
    }
 
+   sqrt = () => {
+      const mag = this.magnitude()
+      const first_part = Math.sqrt((mag + this.re) / 2)
+      const sign = this.im / Math.abs(this.im)
+      const second_part = sign * Math.sqrt((mag - this.re) / 2)
+      return new Complex(first_part, second_part)
+   }
+
 }
 
 export default Complex;
