@@ -110,6 +110,8 @@ export class CoolStyles {
    static link = css`
         ${CoolStyles.italic};
         ${CoolStyles.pointer};
+        color: ${CoolColors.cool_blue};
+        font-weight: normal;
         &: hover{
             ${CoolStyles.underline};
         }
@@ -118,6 +120,8 @@ export class CoolStyles {
    static LinkSpan = styled.span`
         ${CoolStyles.pointer}
         ${CoolStyles.noselect}
+        ${CoolStyles.italic}
+        color: ${CoolColors.cool_blue}
     `;
 
    static Clickable = styled.div`
@@ -137,6 +141,16 @@ export class CoolStyles {
 
    static blue_border = css`
         border: 0.125rem solid ${CoolColors.cool_blue};
+        border-radius: 0.25rem;
+    `;
+
+   static dark_border = css`
+        border: 0.125rem solid #666666;
+        border-radius: 0.25rem;
+    `;
+
+   static light_border = css`
+        border: 0.125rem solid #aaaaaa;
         border-radius: 0.25rem;
     `;
 

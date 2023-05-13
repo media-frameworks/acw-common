@@ -39,6 +39,11 @@ export class Complex {
       return this.mul(com_conj);
    }
 
+   reciprocal = () => {
+      const one = new Complex(1.0, 0)
+      return one.divide(this);
+   }
+
    scale = (s) => {
       return new Complex(s * this.re, s * this.im);
    }

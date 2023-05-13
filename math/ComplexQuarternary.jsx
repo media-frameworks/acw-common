@@ -39,7 +39,7 @@ export class ComplexQuarternary {
    to_string = () => {
       let str_result = '';
       let digit = 0;
-      while (this.left_part[digit] === 0 && this.left_part[digit + 1] === 0) {
+      while (this.left_part[digit] === 0 && this.left_part[digit + 1] === 0 && digit < this.left_part.length - 1) {
          digit++;
       }
       if (digit > 0) {
