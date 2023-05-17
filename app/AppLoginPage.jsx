@@ -3,11 +3,13 @@ import styled from "styled-components";
 
 import {useGoogleLogin} from '@react-oauth/google';
 
+import network from "common/config/network.json";
 import {CoolStyles, CoolColors} from 'common/ui/CoolImports';
 import PageMain from 'pages/PageMain';
 
 import logo from './logo.jpg';
 
+const FRACTO_PHP_URL_BASE = network.fracto_server_url;
 const LOGO_HEIGHT_PX = 75;
 
 const TitleBlock = styled(CoolStyles.Block)`
@@ -50,8 +52,6 @@ const ButtonBlock = styled.button`
 const Wrapper = styled(CoolStyles.Block)`
    ${CoolStyles.align_center}
 `
-
-const FRACTO_PHP_URL_BASE = "http://dev.mikehallstudio.com/fracto/fracto-server";
 
 function user_verified(response) {
    console.log("response.access_token",response.access_token)
