@@ -139,6 +139,26 @@ export class CoolStyles {
         ${CoolStyles.align_top}
     `;
 
+   static Table = styled.div`
+        display: table;
+    `;
+
+   static TableRow = styled.div`
+        display: table-row;
+    `;
+
+   static TableCell = styled.div`
+        display: table-cell;
+    `;
+
+   static TableHeader = styled.div`
+        display: table-header-group;
+    `;
+
+   static TableBody = styled.div`
+        display: table-row-group;
+    `;
+
    static blue_border = css`
         border: 0.125rem solid ${CoolColors.cool_blue};
         border-radius: 0.25rem;

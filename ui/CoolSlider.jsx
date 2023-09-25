@@ -5,6 +5,8 @@ import styled from "styled-components";
 import ReactSlider from 'react-slider'
 import CoolStyles from "./CoolStyles";
 
+export const SLIDER_WIDTH_PX = 25;
+
 const StyledSlider = styled(ReactSlider)`
    vertical-align: middle;
    height: 1rem;
@@ -13,14 +15,13 @@ const StyledSlider = styled(ReactSlider)`
 
 const StyledVerticalSlider = styled(ReactSlider)`
    margin: auto;
-   width: 2rem;
+   width: ${SLIDER_WIDTH_PX};
    height: inherit;
 `;
 
 const StyledThumb = styled.div`
    ${CoolStyles.align_center}
    height: 1rem;
-   width: 2rem;
    line-height: 1rem;
    text-align: center;
    font-size: 0.85rem;
