@@ -23,11 +23,12 @@ export class CoolSelect extends Component {
    render() {
       const {options, on_change, value} = this.props;
       const all_options = options.map((data, index) => {
+         const help = !data.help ? '' : ` (${data.help})`
          return <CoolOption
             key={`option_${index}_${data.label}`}
             value={data.value}
-            selected={parseFloat(value) === parseFloat(data.value)}>
-            {`${data.label} (${data.help})`}
+            selected={value === data.value}>
+            {`${data.label}${help}`}
          </CoolOption>
       });
       return <SelectWrapper
