@@ -97,4 +97,11 @@ export class Vector3d {
                 vector.direction.z / magnitude
             ));
     }
+
+    static sum(vector1, vector2) {
+        const a = vector1.direction;
+        const b = vector2.direction;
+        const sum = Point3d.sum(a, b)
+        return new Vector3d(vector1.location, sum);
+    }
 }
