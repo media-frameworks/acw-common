@@ -39,6 +39,7 @@ const RightSideWrapper = styled(CoolStyles.InlineBlock)`
    top: ${HEADER_BAR_HEIGHT_REM}rem;
    bottom: 0;
    right: 0;
+   overflow-y: auto;
 `;
 
 const LeftSideWrapper = styled(CoolStyles.InlineBlock)`
