@@ -15,6 +15,7 @@ export const CELL_TYPE_TEXT = "cell_type_text"
 export const CELL_TYPE_SELECT = "cell_type_select"
 export const CELL_TYPE_LINK = "cell_type_link"
 export const CELL_TYPE_TIME_AGO = "cell_type_time_ago"
+export const CELL_TYPE_CALLBACK = "cell_type_callback"
 
 export const CELL_ALIGN_LEFT = "cell_align_left"
 export const CELL_ALIGN_RIGHT = "cell_align_right"
@@ -149,12 +150,15 @@ export class CoolTable extends Component {
          case CELL_TYPE_TIME_AGO:
             object_data = <ReactTimeAgo date={data}/>
             break;
+         case CELL_TYPE_CALLBACK:
+            object_data = data[0](data[1])
+            break;
          case CELL_TYPE_OBJECT:
          case CELL_TYPE_TEXT:
          default:
             break;
       }
-      const cell_style = column.width_px ? {maxWidth: `${column.width_px}px`} : {}
+      let cell_style = {maxWidth: `${column.width_px}px`}
       if (column.align) {
          switch (column.align) {
             case CELL_ALIGN_LEFT:
@@ -170,6 +174,12 @@ export class CoolTable extends Component {
                console.log("unknown align option", column.align)
                break;
          }
+      }
+      if (column["style"]) {
+         cell_style = {
+            ...cell_style,
+            ...column["style"]
+         };
       }
       return <TableCell
          style={cell_style}
