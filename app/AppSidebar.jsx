@@ -6,7 +6,6 @@ import {CoolStyles} from 'common/ui/CoolImports';
 
 const FieldTypeWrapper = styled(CoolStyles.Block)`
    ${CoolStyles.noselect}
-   margin: 0.5rem 1rem 0;
 `;
 
 const FieldTypeName = styled(CoolStyles.InlineBlock)`
@@ -15,7 +14,7 @@ const FieldTypeName = styled(CoolStyles.InlineBlock)`
    ${CoolStyles.pointer}
    font-size: 1.125rem;
    color: #666666;
-   line-height: 1.25rem;
+   line-height: 1.5rem;
 `;
 
 const Dot = styled(CoolStyles.InlineBlock)`
@@ -26,18 +25,18 @@ const Dot = styled(CoolStyles.InlineBlock)`
    border-radius: 0.25rem;
    background-color: #888888;
    cursor: pointer;
-   line-height: 1.25rem;
+   line-height: 1.5rem;
    margin-right: 0.5rem;
 `;
 
 const Not = styled(CoolStyles.InlineBlock)`
    height: 0.5rem;
    width: 1rem;
-   line-height: 1.25rem;
+   line-height: 1.5rem;
 `;
 
 const SidebarWrapper = styled(CoolStyles.Block)`
-   margin-top: 1rem;
+   margin: 0.5rem;
 `;
 
 export class AppSidebar extends Component {

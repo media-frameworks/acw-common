@@ -65,7 +65,7 @@ export class AppPageMain extends Component {
    };
 
    componentDidMount() {
-      const {app_name} = this.props;
+      const {app_name, on_resize} = this.props;
       window.addEventListener("resize", this.resize_wrapper);
 
       const position_key = `${app_name}_splitter_position`;

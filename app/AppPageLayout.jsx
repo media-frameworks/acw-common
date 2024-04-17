@@ -13,41 +13,55 @@ export class AppPageLayout extends Component {
    static propTypes = {
       app_name: PropTypes.string.isRequired,
       app_fields_list: PropTypes.array.isRequired,
+      selected_field_index: PropTypes.number.isRequired,
+      app_field_tabs: PropTypes.array,
+      on_resized: PropTypes.func,
+      on_selected: PropTypes.func,
+   }
+
+   static defaultProps = {
+      app_field_tabs: [],
+      on_resized: null,
+      on_selected: null,
    }
 
    state = {
       left_width: 0,
       right_width: 0,
-      selected_field_index: 0
    };
 
-   componentDidMount() {
-   }
-
    on_resize = (left_width, right_width) => {
+      const {on_resized} = this.props
+      on_resized(left_width, right_width)
       this.setState({
          left_width: left_width,
          right_width: right_width
       })
    }
 
+   on_field_select = (field_index) => {
+      const {on_selected} = this.props
+      on_selected(field_index)
+   }
+
    render_content_left = (width_px) => {
-      const {left_width, selected_field_index} = this.state
-      const {app_fields_list} = this.props
+      const {left_width} = this.state
+      const {app_fields_list, selected_field_index} = this.props
       return <AppSidebar
          width_px={left_width}
          fields_list={app_fields_list}
          selected_field_index={selected_field_index}
-         on_field_select={field_index => this.setState({selected_field_index: field_index})}
+         on_field_select={field_index => this.on_field_select(field_index)}
       />
    }
 
    render_content_right = (width_px) => {
-      const {right_width, selected_field_index} = this.state
-      const {app_fields_list} = this.props
+      const {right_width} = this.state
+      const {app_fields_list, app_field_tabs, selected_field_index} = this.props
       return <AppMainField
          width_px={right_width}
          selected_field={app_fields_list[selected_field_index]}
+         field_tabs={app_field_tabs}
       />
    }
 
