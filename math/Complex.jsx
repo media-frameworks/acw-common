@@ -64,6 +64,12 @@ export class Complex {
       return new Complex(first_part, second_part)
    }
 
+   ln = () => {
+      const mag = this.magnitude()
+      const angle = Math.atan2(this.im, this.re)
+      return new Complex(mag, angle)
+   }
+
 }
 
 export default Complex;
