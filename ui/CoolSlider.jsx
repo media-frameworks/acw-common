@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Slider from '@mui/material/Slider';
 // import CoolStyles from "./CoolStyles";
 
-export const SLIDER_WIDTH_PX = 35;
+export const SLIDER_WIDTH_PX = 15;
 
 const StyledSlider = styled(Slider)`
    vertical-align: middle;
@@ -15,8 +15,7 @@ const StyledSlider = styled(Slider)`
 
 const StyledVerticalSlider = styled(Slider)`
    margin: auto;
-   width: ${SLIDER_WIDTH_PX};
-   height: inherit;
+   padding: 0 6px !important;
 `;
 
 export class CoolSlider extends Component {

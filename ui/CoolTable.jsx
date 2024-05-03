@@ -3,12 +3,18 @@ import PropTypes from 'prop-types';
 import styled from "styled-components";
 
 import {CoolStyles} from "./CoolImports";
+import ReactTimeAgo from 'react-time-ago';
+import TimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en'
+
+TimeAgo.locale(en)
 
 export const CELL_TYPE_OBJECT = "cell_type_oject"
 export const CELL_TYPE_NUMBER = "cell_type_number"
 export const CELL_TYPE_TEXT = "cell_type_text"
 export const CELL_TYPE_SELECT = "cell_type_select"
 export const CELL_TYPE_LINK = "cell_type_link"
+export const CELL_TYPE_TIME_AGO = "cell_type_time_ago"
 export const CELL_TYPE_CALLBACK = "cell_type_callback"
 
 export const CELL_ALIGN_LEFT = "cell_align_left"
@@ -70,6 +76,11 @@ const TableBody = styled(CoolStyles.TableBody)`
    padding: 0.125rem;
 `
 
+const TableScrollable = styled(CoolStyles.Block)`
+   max-height: 21rem;
+   overflow-y: auto;
+`
+
 const NumericSpan = styled.span`
    ${CoolStyles.monospace}
    ${CoolStyles.ellipsis}
@@ -97,7 +108,7 @@ export class CoolTable extends Component {
    state = {}
 
    render_header_cell = (column) => {
-      const cell_style = {minWidth: `${column.width_px}px`}
+      const cell_style = column.width_px ? {minWidth: `${column.width_px}px`} : {}
       if (column.align) {
          switch (column.align) {
             case CELL_ALIGN_LEFT:
@@ -132,12 +143,16 @@ export class CoolTable extends Component {
             object_data = <NumericSpan>{data}</NumericSpan>
             break;
          case CELL_TYPE_LINK:
-            object_data = <LinkSpan onClick={e=>{column.on_click(id, data)}}>{data}</LinkSpan>
+            object_data = <LinkSpan onClick={e => {
+               column.on_click(id, data)
+            }}>{data}</LinkSpan>
+            break;
+         case CELL_TYPE_TIME_AGO:
+            object_data = <ReactTimeAgo date={data}/>
             break;
          case CELL_TYPE_CALLBACK:
             object_data = data[0](data[1])
             break;
-
          case CELL_TYPE_OBJECT:
          case CELL_TYPE_TEXT:
          default:
@@ -181,7 +196,7 @@ export class CoolTable extends Component {
 
    render_selector = (row, column) => {
       const {selected_row} = this.props
-      const cell_style = {maxWidth: `${column.width_px}px`}
+      const cell_style = column.width_px ? {maxWidth: `${column.width_px}px`} : {}
       return <SelectorCell
          style={cell_style}
          key={`selector-${row}`}>
@@ -215,8 +230,10 @@ export class CoolTable extends Component {
          </TableRow>
       })
       return <MainTable>
-         <TableHeader>{header_cells}</TableHeader>
-         <TableBody>{table_rows}</TableBody>
+         <TableScrollable>
+            <TableHeader>{header_cells}</TableHeader>
+            <TableBody>{table_rows}</TableBody>
+         </TableScrollable>
       </MainTable>
    }
 }

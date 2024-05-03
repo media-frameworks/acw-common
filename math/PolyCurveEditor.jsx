@@ -5,15 +5,15 @@ import PropTypes from 'prop-types'
 
 import Slider from 'rc-slider';
 
-import {AppStyles} from "app/AppImports";
+import {CoolStyles} from "common/ui/CoolStyles";
 import LinearEquation from "common/math/LinearEquation";
 
-const BlockWrapper = styled(AppStyles.Block)`
-    ${AppStyles.noselect}
+const BlockWrapper = styled(CoolStyles.Block)`
+    ${CoolStyles.noselect}
 `;
 
-const TestFieldWrapper = styled(AppStyles.InlineBlock)`
-    ${AppStyles.noselect}
+const TestFieldWrapper = styled(CoolStyles.InlineBlock)`
+    ${CoolStyles.noselect}
     padding: 0.5rem 0 1rem;
     border: 0.15rem solid #666666;
     border-radius: 0.25rem;
@@ -27,7 +27,7 @@ const VerticalSlider = styled(Slider)`
     background-color: #eeeeee;
 `;
 
-const SliderWrapper = styled(AppStyles.InlineBlock)`
+const SliderWrapper = styled(CoolStyles.InlineBlock)`
     margin: 0 2rem;
     z-index: 100;
 `;
