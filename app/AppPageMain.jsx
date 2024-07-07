@@ -66,7 +66,7 @@ export class AppPageMain extends Component {
    };
 
    componentDidMount() {
-      const {app_name, on_resize} = this.props;
+      const {app_name} = this.props;
       window.addEventListener("resize", this.resize_wrapper);
 
       const position_key = `${app_name}_splitter_position`;
@@ -117,7 +117,7 @@ export class AppPageMain extends Component {
       const {wrapper_ref, content_bounds, splitter_position, left_side_width, right_side_width} = this.state
       const {app_name, content_left, content_right} = this.props;
       return <PageWrapper ref={wrapper_ref}>
-         <AppHeaderBar app_name={app_name}/>,
+         <AppHeaderBar app_name={app_name}/>
          <ContentWrapper>
             <LeftSideWrapper style={{width: `${left_side_width}px`}}>
                {content_left}

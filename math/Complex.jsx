@@ -1,4 +1,3 @@
-
 export class Complex {
 
    re: 0;
@@ -68,6 +67,22 @@ export class Complex {
       const mag = this.magnitude()
       const angle = Math.atan2(this.im, this.re)
       return new Complex(mag, angle)
+   }
+
+   static solve_quadratic = (a, b, c) => {
+      const b_squared = b.mul(b)
+      const negative_four_a_c = a.mul(c).scale(-4)
+      const under_radical = b_squared.add(negative_four_a_c)
+      const negative_b = b.scale(-1)
+      const positive_radical = under_radical.sqrt()
+      const negative_radical = positive_radical.scale(-1)
+      const numerator1 = negative_b.add(positive_radical)
+      const numerator2 = negative_b.add(negative_radical)
+      const two_a = a.scale(2)
+      return [
+         numerator1.divide(two_a),
+         numerator2.divide(two_a),
+      ]
    }
 
 }

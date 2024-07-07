@@ -42,7 +42,7 @@ export class CoolTabs extends Component {
       labels: PropTypes.array.isRequired,
       tab_index: PropTypes.number.isRequired,
       on_tab_select: PropTypes.func.isRequired,
-      selected_content: PropTypes.array.isRequired,
+      selected_content: PropTypes.object.isRequired,
       style: PropTypes.object,
       width_px: PropTypes.number,
    }
