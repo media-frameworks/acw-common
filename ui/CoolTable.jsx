@@ -77,7 +77,7 @@ const TableBody = styled(CoolStyles.TableBody)`
 `
 
 const TableScrollable = styled(CoolStyles.Block)`
-   max-height: 21rem;
+   overflow-x: hidden;
    overflow-y: auto;
 `
 
@@ -151,7 +151,9 @@ export class CoolTable extends Component {
             object_data = <ReactTimeAgo date={data}/>
             break;
          case CELL_TYPE_CALLBACK:
-            object_data = data[0](data[1])
+            if (data[0]) {
+               object_data = data[0](data[1])
+            }
             break;
          case CELL_TYPE_OBJECT:
          case CELL_TYPE_TEXT:
