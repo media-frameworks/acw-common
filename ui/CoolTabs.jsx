@@ -5,10 +5,13 @@ import styled from "styled-components";
 import {CoolStyles} from "./CoolImports";
 
 const TabsWrapper = styled(CoolStyles.Block)`
+   ${CoolStyles.noselect}
    margin: 0;
+   background-color: rgba(0, 0, 0, 0);
 `;
 
 const CardWrapper = styled(CoolStyles.Block)`
+   ${CoolStyles.noselect}
    border: 0.15rem solid #aaaaaa;
    border-radius: 0 0.25rem 0.25rem 0.25rem;
    min-height: 12.25rem;

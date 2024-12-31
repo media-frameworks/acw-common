@@ -50,6 +50,8 @@ const LeftSideWrapper = styled(CoolStyles.InlineBlock)`
    left: 0;
 `;
 
+const MAX_SPLITTER_PX = 350
+
 export class AppPageMain extends Component {
 
    static propTypes = {
@@ -62,7 +64,7 @@ export class AppPageMain extends Component {
    state = {
       wrapper_ref: React.createRef(),
       content_bounds: {},
-      splitter_position: 0,
+      splitter_position: MAX_SPLITTER_PX,
    };
 
    componentDidMount() {
@@ -70,8 +72,10 @@ export class AppPageMain extends Component {
       window.addEventListener("resize", this.resize_wrapper);
 
       const position_key = `${app_name}_splitter_position`;
-      const splitter_position = parseInt(localStorage.getItem(position_key))
-
+      let splitter_position = parseInt(localStorage.getItem(position_key))
+      if (splitter_position > MAX_SPLITTER_PX) {
+         splitter_position = MAX_SPLITTER_PX
+      }
       this.resize_wrapper(null, splitter_position);
    }
 
@@ -91,10 +95,12 @@ export class AppPageMain extends Component {
       this.resize_panes(splitter_position ? splitter_position : this.state.splitter_position)
    }
 
-   resize_panes = (splitter_position, from_callback = false) => {
+   resize_panes = (new_splitter_position, from_callback = false) => {
       const {wrapper_ref} = this.state;
       const {app_name, on_resize} = this.props;
       const wrapper = wrapper_ref.current;
+      const splitter_position = new_splitter_position > MAX_SPLITTER_PX
+         ? MAX_SPLITTER_PX : new_splitter_position
       if (wrapper) {
          const content_bounds = wrapper.getBoundingClientRect();
          const right_side_width = content_bounds.width - splitter_position - SPLITTER_WIDTH_PX + 2;

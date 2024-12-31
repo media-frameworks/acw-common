@@ -63,6 +63,16 @@ export class Complex {
       return new Complex(first_part, second_part)
    }
 
+   nth_root = (n) => {
+      const r = this.magnitude()
+      const nth_root_r = Math.pow(r, 1 / n);
+      const theta = Math.atan2(this.im, this.re)
+      return new Complex(
+         nth_root_r * Math.cos(theta / n),
+         nth_root_r * Math.sin(theta / n)
+      )
+   }
+
    ln = () => {
       const mag = this.magnitude()
       const angle = Math.atan2(this.im, this.re)
