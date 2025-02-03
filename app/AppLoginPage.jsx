@@ -9,7 +9,7 @@ import PageMain from 'pages/PageMain';
 
 import logo from './logo.jpg';
 
-const FRACTO_PHP_URL_BASE = network.fracto_server_url;
+const FRACTO_PHP_URL_BASE = network["fracto-prod"];
 const LOGO_HEIGHT_PX = 75;
 
 const TitleBlock = styled(CoolStyles.Block)`
