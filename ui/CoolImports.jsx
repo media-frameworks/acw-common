@@ -1,6 +1,6 @@
 
 export {default as CoolColors} from "./CoolColors";
-export {default as CoolStyles} from "./CoolStyles";
+export {default as CoolStyles} from "./styles/CoolStyles";
 
 export {default as CoolButton} from "./CoolButton";
 export {default as CoolModal} from "./CoolModal";
