@@ -12,7 +12,7 @@ const SPLITTER_WIDTH_PX = 5;
 
 const PageWrapper = styled.div`
     position: absolute;
-    font-family: Arial;
+    font-family: Arial,serif;
     font-size: 1rem;
     overflow: hidden;
     height: 100%;
