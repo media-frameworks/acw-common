@@ -92,7 +92,7 @@ export class AppMainField extends Component {
       const storage_key = `field_tab_${selected_field.field_indicator}`
       const tab_index_str = localStorage.getItem(storage_key)
       if (tab_index_str) {
-         this.setState({selected_tab_index: parseInt(tab_index_str)})
+         this.setState({selected_tab_index: parseInt(tab_index_str, 10)})
       }
       else {
          this.setState({selected_tab_index: 0})

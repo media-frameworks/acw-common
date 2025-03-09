@@ -1,6 +1,6 @@
 import styled, {css} from "styled-components";
 
-import {CoolColors} from "./CoolImports";
+import {CoolColors} from "../CoolImports";
 
 export class CoolStyles {
 

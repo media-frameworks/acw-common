@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 import Slider from 'rc-slider';
 
-import {CoolStyles} from "common/ui/CoolStyles";
+import {CoolStyles} from "common/ui/styles/CoolStyles";
 import LinearEquation from "common/math/LinearEquation";
 
 const BlockWrapper = styled(CoolStyles.Block)`

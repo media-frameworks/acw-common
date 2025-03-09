@@ -43,7 +43,8 @@ export class CoolSlider extends Component {
          value={value}
          onChange={on_change}
          orientation={"horizontal"}
-         valueLabelDisplay="auto"
+         valueLabelDisplay={"auto"}
+         size={'small'}
       /> : <StyledVerticalSlider
          max={max}
          min={min}
