@@ -11,7 +11,6 @@ const TabsWrapper = styled(CoolStyles.Block)`
 `;
 
 const CardWrapper = styled(CoolStyles.Block)`
-   ${CoolStyles.noselect}
    border: 0.15rem solid #aaaaaa;
    border-radius: 0 0.25rem 0.25rem 0.25rem;
    min-height: 12.25rem;
