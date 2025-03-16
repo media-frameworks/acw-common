@@ -16,6 +16,10 @@ export class CoolStyles {
         vertical-align: top;
     `;
 
+   static align_bottom = css`
+       vertical-align: bottom;
+   `;
+
    static align_middle = css`
         vertical-align: middle;
     `;
