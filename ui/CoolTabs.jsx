@@ -19,23 +19,29 @@ const CardWrapper = styled(CoolStyles.Block)`
 `;
 
 const TabSpan = styled(CoolStyles.InlineBlock)`
-   ${CoolStyles.pointer}
-   ${CoolStyles.ellipsis}
-   color: #eeeeee;
-   background-color: #bbbbbb;
-   padding: 0 0.5rem;
+    ${CoolStyles.pointer}
+    ${CoolStyles.ellipsis}
+    ${CoolStyles.uppercase}
+    color: white;
+    background-color: #cccccc;
+    padding: 0.25rem 1rem 0;
+    font-size: 1.0rem;
+    letter-spacing: 0.125rem;
 `;
 
 const TabSpanSelected = styled(CoolStyles.InlineBlock)`
-   ${CoolStyles.bold}
-   ${CoolStyles.ellipsis}
-   color: #444444;
-   padding: 0 0.5rem;
-   border: 0.15rem solid #aaaaaa;
-   border-radius: 0.25rem 0.25rem 0 0;
-   border-bottom: 0;
-   background-color: white;
-   z-index: 100;
+    ${CoolStyles.bold}
+    ${CoolStyles.ellipsis}
+    ${CoolStyles.uppercase}
+    ${CoolStyles.deep_blue_text};
+    padding: 0.25rem 1rem 0;
+    border: 0.15rem solid #aaaaaa;
+    border-radius: 0.25rem 0.25rem 0 0;
+    border-bottom: 0;
+    background-color: white;
+    z-index: 100;
+    font-size: 1.0rem;
+    letter-spacing: 0.125rem;
 `;
 
 export class CoolTabs extends Component {
