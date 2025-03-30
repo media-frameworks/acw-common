@@ -13,8 +13,7 @@ const SplitterBar = styled(CoolStyles.InlineBlock)`
    ${CoolStyles.noselect}
   background-color: #eeeeee;
    z-index: 100;
-   border-left: 1px solid ${SPLITTER_BORDER_COLOR};
-   border-right: 1px solid ${SPLITTER_BORDER_COLOR};
+   border: 1px solid ${SPLITTER_BORDER_COLOR};
 `;
 
 export class CoolSplitter extends Component {
