@@ -9,15 +9,26 @@ export class CoolTree extends Component {
 
    static propTypes = {
       data: PropTypes.elementType.isRequired,
-      on_select: PropTypes.func.isRequired,
-      on_expand: PropTypes.func.isRequired,
+      on_select: PropTypes.func,
+      on_expand: PropTypes.func,
       selected_keys: PropTypes.array.isRequired,
       expanded_keys: PropTypes.array.isRequired,
    }
 
+   static on_expand_noop = () => {
+      console.log('on_expand not yet supported')
+   }
+
+   static on_select_noop = () => {
+      console.log('on_select not yet supported')
+   }
+
+   static defaultProps = {
+      on_expand: CoolTree.on_expand_noop, on_select: CoolTree.on_select_noop,
+   }
+
    state = {
-      tree_ref: React.createRef(),
-      parent_bounds: null,
+      tree_ref: React.createRef(), parent_bounds: null,
    }
 
    componentDidMount() {
@@ -31,8 +42,7 @@ export class CoolTree extends Component {
       const {tree_ref, parent_bounds} = this.state
       const {data, on_select, on_expand, expanded_keys, selected_keys} = this.props
       const wrapper_style = {
-         width: `${parent_bounds?.width - 10}px`,
-         height: `${parent_bounds?.height - 50}px`
+         width: `${parent_bounds?.width - 10}px`, height: `${parent_bounds?.height - 50}px`
       }
       return <CoolStyles.Block
          style={wrapper_style}
