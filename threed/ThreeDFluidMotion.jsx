@@ -7,8 +7,8 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPlusSquare} from '@fortawesome/free-regular-svg-icons';
 import {faMinusSquare} from '@fortawesome/free-regular-svg-icons';
 
-import {AppStyles, AppColors} from "../../../app/AppImports";
-import LinearEquation from "../../../common/math/LinearEquation";
+import {AppStyles, AppColors} from "app/AppImports";
+import LinearEquation from "common/math/LinearEquation";
 
 const MIN_POINT_COUNT = 3;
 const MAX_POINT_COUNT = 20;

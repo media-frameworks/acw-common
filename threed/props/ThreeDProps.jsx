@@ -5,11 +5,11 @@ import styled from "styled-components";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPlusSquare} from '@fortawesome/free-regular-svg-icons';
 
-import StoreS3, {S3_PREFIX} from "../../../common/StoreS3";
-import Utils from "../../../common/Utils";
-import {AppStyles, AppColors} from "../../../app/AppImports";
-import CoolDropdown from "../../../common/CoolDropdown";
-import CoolInputText from "../../../common/CoolInputText";
+import StoreS3, {S3_PREFIX} from "common/StoreS3";
+import Utils from "common/Utils";
+import CoolDropdown from "common/CoolDropdown";
+import CoolInputText from "common/CoolInputText";
+import {AppStyles, AppColors} from "app/AppImports";
 
 const PROP_CODE_TERMS = 'terms';
 const PROP_CODE_NOTES = 'notes';

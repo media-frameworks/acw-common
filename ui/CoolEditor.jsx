@@ -6,7 +6,7 @@ import {Editor} from 'react-draft-wysiwyg';
 import {EditorState, ContentState, convertFromHTML} from 'draft-js';
 import {stateToHTML} from 'draft-js-export-html';
 
-import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import 'node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import './cool.css';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
