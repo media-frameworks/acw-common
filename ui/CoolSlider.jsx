@@ -53,6 +53,7 @@ export class CoolSlider extends Component {
          onChange={on_change}
          orientation={"vertical"}
          valueLabelDisplay={"auto"}
+         size={'small'}
       />
    }
 }
