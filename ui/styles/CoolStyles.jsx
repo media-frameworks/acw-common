@@ -75,6 +75,10 @@ export class CoolStyles {
         white-space: nowrap;
     `;
 
+   static tight_box_shadow = css`
+        box-shadow: 0.125rem 0.125rem 0.25rem rgba(0,0,0,0.2);
+    `;
+
    static narrow_box_shadow = css`
         box-shadow: 0.25rem 0.25rem 0.5rem rgba(0,0,0,0.2);
     `;
@@ -85,6 +89,10 @@ export class CoolStyles {
 
    static wide_box_shadow = css`
         box-shadow: 1rem 1rem 2rem rgba(0,0,0,0.2);
+    `;
+
+   static tight_text_shadow = css`
+        text-shadow: 0.125rem 0.125rem 0.25rem rgba(0,0,0,0.75);
     `;
 
    static narrow_text_shadow = css`
