@@ -5,11 +5,11 @@ const math = create(all, config)
 math.config({
    number: 'BigNumber',      // Default type of number:
                              // 'number' (default), 'BigNumber', or 'Fraction'
-   precision: 512,            // Number of significant digits for BigNumbers
-   epsilon: 1e-500
+   precision: 64,            // Number of significant digits for BigNumbers
+   // epsilon: 1e-500
 })
 
-const MAX_COMPARE_DIGITS = 500;
+const MAX_COMPARE_DIGITS = 64;
 
 export class BigComplex {
 
@@ -21,14 +21,14 @@ export class BigComplex {
       this.im = math.bignumber(im);
    }
 
-   get_re = () => {
+   get_re = (digits = 30) => {
       const re_str = `${this.re}`;
-      return parseFloat(re_str.substr(0, 20))
+      return parseFloat(re_str.substring(0, digits))
    }
 
-   get_im = () => {
+   get_im = (digits = 30) => {
       const im_str = `${this.im}`;
-      return parseFloat(im_str.substr(0, 20))
+      return parseFloat(im_str.substring(0, digits))
    }
 
    is_valid = () => {
@@ -44,7 +44,7 @@ export class BigComplex {
    toString = (limit = MAX_COMPARE_DIGITS) => {
       const re_str = `${this.re.toString()}`;
       const im_str = `${this.im.toString()}`;
-      return `${re_str.substr(0, limit)}+${im_str.substr(0, limit)}i`;
+      return `${re_str.substring(0, limit)}+${im_str.substring(0, limit)}i`;
    }
 
    compare = (z, limit = MAX_COMPARE_DIGITS) => {
@@ -88,7 +88,7 @@ export class BigComplex {
          factorial = math.multiply(factorial, i);
          const recip_fact = math.divide(1, factorial);
          if (math.smaller(recip_fact, epsilon)) {
-            console.log("precision reached at",i);
+            console.log("precision reached at", i);
             break;
          }
          const term = num.scale(recip_fact);
