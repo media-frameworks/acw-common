@@ -33,61 +33,62 @@ const HEADER_COLUMN_SELECT = {
 }
 
 const MainTable = styled(CoolStyles.Table)`
-   border: 0.1rem solid #aaaaaa;
+    border: 0.1rem solid #aaaaaa;
 `
 
 const TableRow = styled(CoolStyles.TableRow)`
-   padding: 0 0.125rem;
-   &: hover{
-      ${CoolStyles.pointer}
-      background-color: #eeeeee;
-   }
+    padding: 0 0.125rem;
+
+    &: hover {
+        ${CoolStyles.pointer}
+        background-color: #eeeeee;
+    }
 `
 
 const TableCell = styled(CoolStyles.TableCell)`
-   ${CoolStyles.ellipsis}
-   padding: 0.25rem 0.5rem 0 0.75rem;
+    ${CoolStyles.ellipsis}
+    padding: 0.25rem 0.5rem 0 0.75rem;
 `
 
 const SelectorCell = styled(CoolStyles.TableCell)`
-   padding: 0 0.375rem;
+    padding: 0 0.375rem;
 `
 
 const HeaderSpan = styled(CoolStyles.InlineBlock)`
-   ${CoolStyles.uppercase}
-   ${CoolStyles.narrow_text_shadow}
-   color: white;
-   font-size: 0.70rem;
-   letter-spacing: 1px;
-   padding: 0.125rem 0.5rem;
-   background-color: #888888;
-   margin: 0.125rem 0;
+    ${CoolStyles.uppercase}
+    ${CoolStyles.narrow_text_shadow}
+    color: white;
+    font-size: 0.70rem;
+    letter-spacing: 1px;
+    padding: 0.125rem 0.5rem;
+    background-color: #888888;
+    margin: 0.125rem 0;
 `
 
 const TableHeader = styled(CoolStyles.TableHeader)`
-   background-color: #dddddd;
-   padding: 0;
+    background-color: #dddddd;
+    padding: 0;
 `
 const HeaderCell = styled(CoolStyles.TableCell)`
-   padding: 0.125rem 0 0.125rem 0.25rem;
+    padding: 0.125rem 0 0.125rem 0.25rem;
 `
 
 const TableBody = styled(CoolStyles.TableBody)`
-   padding: 0.125rem;
+    padding: 0.125rem;
 `
 
 const TableScrollable = styled(CoolStyles.Block)`
-   overflow-x: hidden;
-   overflow-y: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
 `
 
 const NumericSpan = styled.span`
-   ${CoolStyles.monospace}
-   ${CoolStyles.ellipsis}
+    ${CoolStyles.monospace}
+    ${CoolStyles.ellipsis}
 `
 
 const LinkSpan = styled.span`
-   ${CoolStyles.link}
+    ${CoolStyles.link}
 `
 
 export class CoolTable extends Component {
@@ -96,6 +97,7 @@ export class CoolTable extends Component {
       columns: PropTypes.array.isRequired,
       data: PropTypes.array.isRequired,
       on_select_row: PropTypes.func,
+      on_click_column: PropTypes.func,
       options: PropTypes.array,
       selected_row: PropTypes.number,
    }
@@ -108,6 +110,7 @@ export class CoolTable extends Component {
    state = {}
 
    render_header_cell = (column) => {
+      const {on_click_column} = this.props
       const cell_style = column.width_px ? {minWidth: `${column.width_px}px`} : {}
       if (column.align) {
          switch (column.align) {
@@ -127,6 +130,7 @@ export class CoolTable extends Component {
       }
       return <HeaderCell
          key={`header_cell-${column.id}`}
+         onClick={e => on_click_column ? on_click_column(column.id) : null}
          style={cell_style}>
          <HeaderSpan
             style={cell_style}>
