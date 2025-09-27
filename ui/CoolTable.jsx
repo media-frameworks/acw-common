@@ -70,6 +70,7 @@ const TableHeader = styled(CoolStyles.TableHeader)`
     padding: 0;
 `
 const HeaderCell = styled(CoolStyles.TableCell)`
+    ${CoolStyles.noselect}
     padding: 0.125rem 0 0.125rem 0.25rem;
 `
 
@@ -112,6 +113,9 @@ export class CoolTable extends Component {
    render_header_cell = (column) => {
       const {on_click_column} = this.props
       const cell_style = column.width_px ? {minWidth: `${column.width_px}px`} : {}
+      if (on_click_column) {
+         cell_style.cursor = "pointer"
+      }
       if (column.align) {
          switch (column.align) {
             case CELL_ALIGN_LEFT:
