@@ -1,4 +1,5 @@
 import config from "../config/aws.json";
+import Buffer from "buffer";
 
 export const S3_PREFIX = 'am-chill-whale';
 
@@ -75,7 +76,7 @@ export class StoreS3 {
          cb(StoreS3.file_cache[name]);
          return;
       }
-      const full_key = `${prefix}/${name}`
+      const full_key = `${prefix}${prefix.length ? '/' : ''}${name}`
       const params = {
          Bucket: "mikehallstudio",
          Key: full_key
@@ -128,7 +129,20 @@ export class StoreS3 {
             cb(null);
          } else {
             var image = new Image();
-            let image_data = new Buffer(data.Body).toString('base64');
+            let image_data;
+            if (typeof Buffer !== 'undefined' && Buffer.from) {
+               image_data = Buffer.from(data.Body).toString('base64');
+            } else {
+               // Browser fallback
+               function uint8ToBase64(uint8) {
+                  let binary = '';
+                  for (let i = 0; i < uint8.length; i++) {
+                     binary += String.fromCharCode(uint8[i]);
+                  }
+                  return window.btoa(binary);
+               }
+               image_data = uint8ToBase64(new Uint8Array(data.Body));
+            }
             image.src = "data:" + data.ContentType + ";base64," + image_data;
             StoreS3.image_cache[name] = image;
             cb(image);

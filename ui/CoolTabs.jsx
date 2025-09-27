@@ -26,7 +26,7 @@ const TabSpan = styled(CoolStyles.InlineBlock)`
     color: white;
     background-color: #cccccc;
     //padding: 0.25rem 1rem 0;
-    font-size: 1.0rem;
+    font-size: 14px;
     letter-spacing: 0.125rem;
 `;
 
@@ -41,7 +41,7 @@ const TabSpanSelected = styled(CoolStyles.InlineBlock)`
     border-bottom: 0;
     background-color: white;
     z-index: 0;
-    font-size: 1.0rem;
+    font-size: 14px;
     letter-spacing: 0.125rem;
 `;
 

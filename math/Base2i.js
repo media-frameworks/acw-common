@@ -1,5 +1,4 @@
 import Complex from "./Complex";
-import {i} from "mathjs";
 
 const MAX_LEFT_DIGITS = 20;
 const MAX_RIGHT_DIGITS = 60;
@@ -17,7 +16,7 @@ export class Base2i {
          this.right_part = p1;
          // console.log("new ComplexQuarternary from arrays", this.left_part, this.right_part)
       } else {
-         const [left_part, right_part] = this.from_complex(p0, p1)
+         const [left_part, right_part] = Base2i.from_complex(p0, p1)
 
          this.left_part = new Array(MAX_LEFT_DIGITS).fill(0);
          this.right_part = new Array(MAX_RIGHT_DIGITS).fill(0);
@@ -54,7 +53,6 @@ export class Base2i {
       const str_entry = this.to_string()
       const dot_position = str_entry.indexOf('.')
       const two_i = new Complex(0, 2)
-      const one_by_two_i = two_i.reciprocal()
       let current_result = new Complex(0, 0)
       let digit_power = dot_position - 1
       for (let i = 0; i < str_entry.length; i++) {
@@ -166,14 +164,11 @@ export class Base2i {
                   im: complex_value.im,
                }})
          }
-         if (index % 10000 === 0) {
-            console.log(`${filtered_entries.length} found in ${index}`)
-         }
+         // if (index % 100000 === 0) {
+         //    console.log(`${filtered_entries.length} found in ${index}`)
+         // }
       }
       console.log(`${filtered_entries.length} filtered entries`, filtered_entries)
-      // filtered_entries.forEach(entry => {
-      //    console.log(entry.base_2i_value.to_string(), entry.complex_value.toString())
-      // })
       return filtered_entries
    }
 }

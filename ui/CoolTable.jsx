@@ -145,7 +145,7 @@ export class CoolTable extends Component {
          case CELL_TYPE_LINK:
             object_data = <LinkSpan onClick={e => {
                column.on_click(id, data)
-            }}>{data}</LinkSpan>
+            }}>{column.alias || data}</LinkSpan>
             break;
          case CELL_TYPE_TIME_AGO:
             object_data = <ReactTimeAgo date={data}/>

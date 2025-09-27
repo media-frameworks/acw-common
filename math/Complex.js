@@ -18,6 +18,10 @@ export class Complex {
       return this_str === z_str;
    }
 
+   is_valid = () => {
+      return !(isNaN(this.re) || isNaN(this.im));
+   }
+
    magnitude = () => {
       if (isNaN(this.re) || isNaN(this.im)) {
          return -1;
