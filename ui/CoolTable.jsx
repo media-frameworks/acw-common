@@ -83,7 +83,7 @@ const TableScrollable = styled(CoolStyles.Block)`
     overflow-y: auto;
 `
 
-const NumericSpan = styled.span`
+export const NumericSpan = styled.span`
     ${CoolStyles.monospace}
     ${CoolStyles.ellipsis}
 `

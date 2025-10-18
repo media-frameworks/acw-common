@@ -25,13 +25,13 @@ export class CoolModal extends Component {
 
    key_handler = (key) => {
       const {response, settings} = this.props;
-      if (key.code === "KeyC" && key.ctrlKey) {
+      if (key.code === "KeyC" && key.ctrlKey && response) {
          response(0);
       }
       if (settings["no_escape"]) {
          return;
       }
-      if (key.code === "Escape") {
+      if (key.code === "Escape" && response) {
          response(0);
       }
    }
@@ -58,10 +58,10 @@ export class CoolModal extends Component {
    }
 
    componentDidMount() {
-      setTimeout(() => {
-         document.addEventListener('keydown', this.key_handler);
-         document.addEventListener('click', this.click_handler);
-      }, 100);
+      // setTimeout(() => {
+      //    document.addEventListener('keydown', this.key_handler);
+      //    document.addEventListener('click', this.click_handler);
+      // }, 100);
    }
 
    componentWillUnmount() {
